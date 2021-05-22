@@ -1,0 +1,38 @@
+﻿@if (ShowSvg)
+{
+    <div style="height:100%;width:100%;margin:0;position:fixed;top:@top;left:0;background-color:white;z-index:1000;transition: top 1s;">
+        <div style="margin: auto;
+        width: 400px;
+        top: calc(50% - (253.83px)/2);
+        position: relative;">
+            <svg width="400px" height="253.83px" viewBox="0 0 1653 1049" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#7467EF" d="M0.15,572.58V0.16L495.9,286.37v190.81L165.4,286.37v381.62L0.15,572.58z"></path>
+                <path fill="#594AE2" d="M495.9,286.37L991.65,0.16v572.43l-330.5,190.81l-165.25-95.4l330.5-190.81V286.37L495.9,477.18V286.37z"></path>
+                <path fill="#7467EF" d="M495.9,667.99V858.8l330.5,190.81V858.8L495.9,667.99z"></path>
+                <path fill="#594AE2" d="M826.4,1049.6l495.75-286.21V0.37l-165.25,95.4v572.21L826.4,858.8V1049.6z"></path>
+                <path fill="#7467ef" d="M1495,467.85l-165.25,95.41,157.47,91.52,165.25-95.38Z"></path>
+                <path fill="#7467EF" d="M1322.15,763.39l-165.25,95.4l330.5,190.81V858.8L1322.15,763.39z"></path>
+                <path fill="#7467EF" d="M1322.13,0.38l-165.25,95.4l330.29,190.83l165.25-95.38L1322.13,0.38z"></path>
+                <path fill="#594AE2" d="M1652.43,191.21l-165.25,95.41v762.99l165.25-95.4L1652.43,191.21z"></path>
+            </svg>
+        </div>
+    </div>
+}
+
+@code{
+    bool ShowSvg = true;
+    string top = "0";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(1);
+            top = "-100vh"; //after first render set top to -100vh
+            StateHasChanged();
+            await Task.Delay(5000); //after first render wait for animation to complete then remove
+            ShowSvg = false;
+            StateHasChanged();
+        }
+    }
+}
