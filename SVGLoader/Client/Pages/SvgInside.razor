@@ -4,6 +4,8 @@
         <div style="margin: auto;
         width: 400px;
         top: calc(50% - (253.83px)/2);
+        /*top: 50%;*/
+        /*transform: translateY(50%);*/
         position: relative;">
             <svg width="400px" height="253.83px" viewBox="0 0 1653 1049" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#7467EF" d="M0.15,572.58V0.16L495.9,286.37v190.81L165.4,286.37v381.62L0.15,572.58z"></path>
@@ -30,7 +32,7 @@
             await Task.Delay(1);
             top = "-100vh"; //after first render set top to -100vh
             StateHasChanged();
-            await Task.Delay(5000); //after first render wait for animation to complete then remove
+            await Task.Delay(1100); //after first render wait for animation to complete then remove
             ShowSvg = false;
             StateHasChanged();
         }
